@@ -4,7 +4,12 @@ kind: Deployment
 metadata:
   name: tarot-be
 spec:
-  replicas: 1
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0   # 기존 것 안 죽이고
+      maxSurge: 1         # 새거 먼저 하나 올리고 교체
   selector:
     matchLabels:
       app: tarot-be
@@ -24,3 +29,9 @@ spec:
                 secretKeyRef:
                   name: tarot-secret
                   key: application-secret
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 9000
+            initialDelaySeconds: 5
+            periodSeconds: 5
