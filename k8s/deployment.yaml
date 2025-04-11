@@ -18,3 +18,9 @@ spec:
           image: joel610/tarot-be:7233bb3 # ← 여기만 바꿔줘!
           ports:
             - containerPort: 9000
+          env:
+            - name: APPLICATION_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: tarot-secret
+                  key: application-secret
