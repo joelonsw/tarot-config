@@ -1,0 +1,20 @@
+# k8s/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tarot-be
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tarot-be
+  template:
+    metadata:
+      labels:
+        app: tarot-be
+    spec:
+      containers:
+        - name: tarot-be
+          image: joel610/tarot-be:7233bb3 # ← 여기만 바꿔줘!
+          ports:
+            - containerPort: 9000
