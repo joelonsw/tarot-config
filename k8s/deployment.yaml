@@ -29,6 +29,11 @@ spec:
                 secretKeyRef:
                   name: tarot-secret
                   key: application-secret
+            - name: GROQ_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: groq-secret
+                  key: groq.apikey
           readinessProbe:
             httpGet:
               path: /
