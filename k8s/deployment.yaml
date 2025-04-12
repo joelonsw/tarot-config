@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: tarot-be
-          image: joel610/tarot-be:3d4553c
+          image: joel610/tarot-be:7f8edc7
           ports:
             - containerPort: 9000
           env:
